@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Lemon Pig — Sadie Forrester</title>
+<meta name="description" content="Lemon Pig case study: search never dead-ends. Any fruit, in the catalog or not, gets an answer, marked when it’s generated live. Designed and built solo for iOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap&subset=latin" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Sadie Forrester</a>
+<nav class="nav" aria-label="Main">
+<ul>
+<li><a href="index.html#work" aria-current="page">Work</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="cv.pdf" target="_blank" rel="noopener">CV<span class="pdf" aria-hidden="true"> ↗</span></a></li>
+<li><a href="about.html#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<article>
+<div class="case-header wrap">
+<p class="tag">Product design · iOS</p>
+<h1>Lemon Pig</h1>
+<p class="meta">Designed and built solo · 2026 · <a href="https://apps.apple.com/us/app/lemon-pig/id6788574999" target="_blank" rel="noopener">App Store <span class="pdf" aria-hidden="true">↗</span><span class="sr">(opens in new tab)</span></a></p>
+</div>
+<figure class="figure media lead wrap">
+<div class="frame video"><video class="hero-video" src="assets/lemon-pig/rambutan.mp4" poster="assets/lemon-pig/rambutan.png" width="720" height="1558" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video><img src="assets/lemon-pig/rambutan.png" width="720" height="1558" alt="Rambutan profile generated live: the label Rooted Up Live, a hero drawn in the fruit’s own colors, taste chips, and the line A hairy little punk on the outside, a jewel of sweet jelly on the inside"></div>
+<figcaption class="meta">A catalog miss, answered. Rambutan, identified live and labeled “Rooted Up Live.” With no pre-vetted image, the hero is drawn in the fruit’s own colors.</figcaption>
+</figure>
+<section class="outcome" aria-labelledby="outcome-label">
+<div class="wrap">
+<h2 class="label" id="outcome-label">Outcome</h2>
+<p class="body-lg text">Shipped solo to the App Store, July 2026. Any fruit, in the prepopulated catalog or not, gets an answer. Live-generated profiles are honestly marked and remembered once found, and every off-catalog search is counted so real use shapes the next version.</p>
+</div>
+</section>
+<section class="section wrap" aria-labelledby="problem">
+<h2 class="label" id="problem">Problem</h2>
+<p class="text">A fruit identifier is used at the moment of need, at a market or grocery store, so a “No match” screen is a dead end at the worst time. A prepopulated catalog can’t be complete because there are thousands of different fruits. The app live-generates an answer as the fallback, but a generated profile has no curated photo and hasn’t been reviewed the way catalog entries have. The design has to present both pathways without pretending they’re the same.</p>
+</section>
+<section class="section wrap" aria-labelledby="role">
+<h2 class="label" id="role">My role</h2>
+<p class="text">I defined the product, made the design decisions, selected the colors and fonts, tested with real fruit and photos, identified bugs (including an AI-introduced camera-view bug), and shipped. The mascot, inspired by Picasso, and the hero image were made with ChatGPT. Claude Design and Claude Code handled the build, including accessibility checks. The calls were mine. Lemon Pig is also where I learned to build with AI, and Wut Mutt inherited its conventions.</p>
+</section>
+<section class="section wrap" aria-labelledby="constraints">
+<h2 class="label" id="constraints">Constraints</h2>
+<p class="text">Five scenarios determined how the app responds.</p>
+<table class="ctable text narrow">
+<caption class="sr">Five scenarios the app handles, the response to each, and the rule behind it</caption>
+<thead><tr><th scope="col">Scenario</th><th scope="col">Response</th><th scope="col">Rule</th></tr></thead>
+<tbody>
+<tr><td data-th="Scenario">Searched fruit is in the catalog</td><td data-th="Response">Full profile with curated photography</td><td data-th="Rule">Curate what you can</td></tr>
+<tr><td data-th="Scenario">Name or photo is off-catalog</td><td data-th="Response">Identified live; labeled “Rooted Up Live”; hero drawn in the fruit’s colors</td><td data-th="Rule">Answer honestly rather than not at all</td></tr>
+<tr><td data-th="Scenario">A live-identified fruit is searched again</td><td data-th="Response">Same profile, served from on-device cache</td><td data-th="Rule">Don’t contradict yourself</td></tr>
+<tr><td data-th="Scenario">Any off-catalog search</td><td data-th="Response">The fruit name is counted anonymously (never photos or IPs) and declared on the privacy label</td><td data-th="Rule">Let real use grow the catalog</td></tr>
+<tr><td data-th="Scenario">Any result touching safety</td><td data-th="Response">Note: “Don’t rely on it alone to judge whether a fruit is safe to eat”</td><td data-th="Rule">Food is involved, so over-disclose</td></tr>
+</tbody>
+</table>
+<p class="text">Although the model tested accurately throughout, the safety disclaimer exists because being right in testing isn’t the same as being safe to trust in every real-life instance.</p>
+</section>
+<section class="section wrap" aria-labelledby="decision">
+<h2 class="label" id="decision">Guiding principle</h2>
+<blockquote class="quote"><p>Search never dead-ends.</p></blockquote>
+<p class="text">On the first real-phone TestFlight build I typed in “rambutan.” To my disappointment, this delightful fruit hit No Match. So I made the call that any fruit not included in the prepopulated catalog be identified live.</p>
+<p class="text">The flow below shows what happens on a miss.</p>
+<figure class="figure media">
+<svg class="dg dg-desktop" viewBox="40 -12 880 340" role="img" aria-labelledby="dg-title dg-desc" font-family="'Open Sans',system-ui,sans-serif" font-size="16">
+<title id="dg-title">What happens when a search misses the Lemon Pig catalog</title>
+<desc id="dg-desc">A search goes to a catalog lookup. On a hit, the app shows the catalog profile. On a miss, the fruit is identified live and shown as a Rooted Up Live profile, the shipped path, which is cached on the device. Branching off the miss path is the rejected alternative: a No Match dead end.</desc>
+<defs>
+<marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#5F6368"/></marker>
+<marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#216F69"/></marker>
+<marker id="ar-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#DC0000"/></marker>
+</defs><text class="kicker" x="40" y="1" fill="#5F6368" font-weight="600" font-size="13" letter-spacing=".06em">USER FLOW</text>
+<g fill="none" stroke="#5F6368" stroke-width="1.5">
+<path d="M190 68H230" marker-end="url(#ar-grey)"/>
+<path d="M420 68H700" marker-end="url(#ar-grey)"/>
+</g>
+<path d="M325 104V196H460" fill="none" stroke="#216F69" stroke-width="1.5" marker-end="url(#ar-green)"/>
+<path d="M640 196H700" fill="none" stroke="#216F69" stroke-width="1.5" marker-end="url(#ar-green)"/>
+<path d="M325 196V284H460" fill="none" stroke="#DC0000" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#ar-red)"/>
+<g fill="#5F6368">
+<text x="560" y="58" text-anchor="middle">Hit</text>
+<text x="335" y="186" fill="#201918">Miss</text>
+</g>
+<g fill="#E8E6E6" stroke="#093190" stroke-width="1">
+<rect x="40" y="40" width="150" height="56" rx="8"/>
+<rect x="230" y="32" width="190" height="72" rx="8" fill="#FEFEFE" stroke="#093190" stroke-width="2"/>
+<rect x="700" y="40" width="200" height="56" rx="8"/>
+<rect x="460" y="160" width="180" height="72" rx="8"/>
+</g>
+<rect x="700" y="160" width="200" height="72" rx="8" fill="#FDDD00" stroke="#216F69" stroke-width="2"/>
+<rect x="460" y="256" width="180" height="56" rx="8" fill="#FEFEFE" stroke="#DC0000" stroke-width="2" stroke-dasharray="6 5"/>
+<g fill="#201918" text-anchor="middle">
+<text x="115" y="73">Search</text>
+<text x="325" y="73" font-weight="600">Catalog lookup</text>
+<text x="800" y="73">Catalog profile</text>
+<text x="550" y="191">Identified live</text>
+<text x="550" y="211" fill="#5F6368">by the model</text>
+<text x="800" y="191">Live profile</text>
+<text x="800" y="211" font-size="14">cached on device</text>
+<text x="550" y="279">No Match</text>
+<text x="550" y="297" fill="#DC0000" font-weight="600" font-size="13">Rejected alternative</text>
+</g>
+</svg>
+<svg class="dg dg-mobile" viewBox="0 -28 370 458" role="img" aria-labelledby="dgm-title dgm-desc" font-family="'Open Sans',system-ui,sans-serif" font-size="14">
+<title id="dgm-title">What happens when a search misses the Lemon Pig catalog</title>
+<desc id="dgm-desc">A search goes to a catalog lookup. On a hit, the app shows the catalog profile. On a miss, the fruit is identified live and shown as a Rooted Up Live profile, the shipped path, which is cached on the device. Branching off the miss path is the rejected alternative: a No Match dead end.</desc>
+<defs>
+<marker id="arm-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#5F6368"/></marker>
+<marker id="arm-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#216F69"/></marker>
+<marker id="arm-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#DC0000"/></marker>
+</defs><text class="kicker" x="20" y="-15" fill="#5F6368" font-weight="600" font-size="12" letter-spacing=".06em">USER FLOW</text>
+<g fill="none" stroke="#5F6368" stroke-width="1.5">
+<path d="M95 64V100" marker-end="url(#arm-grey)"/>
+<path d="M170 136H210" marker-end="url(#arm-grey)"/>
+</g>
+<path d="M95 172V232" fill="none" stroke="#216F69" stroke-width="1.5" marker-end="url(#arm-green)"/>
+<path d="M95 304V344" fill="none" stroke="#216F69" stroke-width="1.5" marker-end="url(#arm-green)"/>
+<path d="M95 200H280V232" fill="none" stroke="#DC0000" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arm-red)"/>
+<g fill="#5F6368">
+<text x="190" y="127" text-anchor="middle">Hit</text>
+<text x="20" y="203" text-anchor="start" fill="#201918">Miss</text>
+</g>
+<g fill="#E8E6E6" stroke="#093190" stroke-width="1">
+<rect x="20" y="16" width="150" height="48" rx="8"/>
+<rect x="20" y="100" width="150" height="72" rx="8" fill="#FEFEFE" stroke="#093190" stroke-width="2"/>
+<rect x="210" y="112" width="140" height="48" rx="8"/>
+<rect x="20" y="232" width="150" height="72" rx="8"/>
+</g>
+<rect x="20" y="344" width="150" height="72" rx="8" fill="#FDDD00" stroke="#216F69" stroke-width="2"/>
+<rect x="210" y="232" width="140" height="56" rx="8" fill="#FEFEFE" stroke="#DC0000" stroke-width="2" stroke-dasharray="6 5"/>
+<g fill="#201918" text-anchor="middle">
+<text x="95" y="45">Search</text>
+<text x="95" y="141" font-weight="600">Catalog lookup</text>
+<text x="280" y="141">Catalog profile</text>
+<text x="95" y="263">Identified live</text>
+<text x="95" y="283" fill="#5F6368">by the model</text>
+<text x="95" y="375">Live profile</text>
+<text x="95" y="393" font-size="12">cached on device</text>
+<text x="280" y="255">No Match</text>
+<text x="280" y="273" fill="#DC0000" font-weight="600" font-size="13">Rejected alternative</text>
+</g>
+</svg>
+<figcaption class="meta">The miss path. A catalog hit returns the curated profile. A miss goes to live identification, returns a live profile, and is cached on the device. The rejected alternative was a No Match dead end.</figcaption>
+</figure>
+<p class="text">Live searches show what the catalog is missing, so I had them counted anonymously to shape future releases.</p>
+<p class="text">Testing also showed that live-generated profiles could differ for the same fruit, so I added a cache that returns the same profile every time.</p>
+<p class="text">So now my rambutan is consistently “A hairy little punk on the outside…”</p>
+<p class="text">A smaller decision from the same testing: plain language over specialist terms. A peach is a stone fruit, not a drupe. Accessible copy is part of earning user trust.</p>
+<p class="text">The home screen had a void, and Claude proposed filling it with a recent-searches list. But nobody looks up a mango twice, so the list would have been noise. I chose a fun fact that cycles on every return instead. The user gets something new each time the app opens, at no cost to the primary task.</p>
+<div class="screens media">
+<figure>
+<div class="frame"><img src="assets/lemon-pig/fun-fact.png" width="720" height="1558" alt="Lemon Pig home screen: Snap or Upload, a search field, taste chips, and a Did you know? fact: bananas are botanically berries, but strawberries are not"></div>
+<figcaption class="meta">Home: two ways in (a photo or a name) and a fun fact that changes on every return.</figcaption>
+</figure>
+<figure>
+<div class="frame"><img src="assets/lemon-pig/tamarind.png" width="720" height="1558" alt="Tamarind profile: a curated photo of tamarind pods, the label Rooted Up, taste chips Sweet-sour and Tropical, a snapshot, and reasons to love"></div>
+<figcaption class="meta">A catalog hit. Tamarind, with curated photography and the label “Rooted Up.”</figcaption>
+</figure>
+</div>
+<aside class="ai-note" aria-labelledby="ai-note-heading">
+<h3 id="ai-note-heading">App Store disclosure</h3>
+<p>Identification and off-catalog profiles are generated live by Claude, Anthropic’s AI. It’s usually accurate — but please don’t rely on it alone to judge whether a fruit is safe to eat. Full disclosure inside the app, plus credits for every catalog photo.</p>
+</aside>
+</section>
+<section class="section wrap" aria-labelledby="differently">
+<h2 class="label" id="differently">Learning</h2>
+<p class="text">I would test on a real phone earlier rather than rely on the simulator because the biggest scope decisions came from one TestFlight session. The simulator has no camera, so photo identification can’t fully be tested there.</p>
+</section>
+<nav class="pager wrap" aria-label="Case studies">
+<a class="prev" href="wut-mutt.html"><span class="kicker">Previous</span><span class="title">Wut Mutt</span></a>
+<a class="next" href="child-health-metrics.html"><span class="kicker">Next</span><span class="title">Child health metrics app</span></a>
+</nav>
+</article>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<ul>
+<li><a href="ai-note.html">AI disclosure</a></li>
+</ul>
+<p class="copy">© 2026 Sadie Forrester</p>
+</div>
+</footer>
+</body>
+</html>

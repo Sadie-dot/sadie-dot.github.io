@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Wut Mutt — Sadie Forrester</title>
+<meta name="description" content="Wut Mutt case study: honesty under uncertainty. Real-world testing mapped where the model was unreliable, and every weak spot has an honest fallback.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap&subset=latin" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="index.html">Sadie Forrester</a>
+<nav class="nav" aria-label="Main">
+<ul>
+<li><a href="index.html#work" aria-current="page">Work</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="cv.pdf" target="_blank" rel="noopener">CV<span class="pdf" aria-hidden="true"> ↗</span></a></li>
+<li><a href="about.html#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="main">
+<article>
+<div class="case-header wrap">
+<p class="tag">Product design · iOS</p>
+<h1>Wut Mutt</h1>
+<p class="meta">Designed and built solo · 2026 · <a href="https://apps.apple.com/us/app/wut-mutt/id6807191413" target="_blank" rel="noopener">App Store <span class="pdf" aria-hidden="true">↗</span><span class="sr">(opens in new tab)</span></a></p>
+</div>
+<figure class="figure media lead wrap">
+<div class="frame video"><video class="hero-video" src="assets/wut-mutt/poodle.mp4" poster="assets/wut-mutt/lead-guest-star.png" width="720" height="1564" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video><img src="assets/wut-mutt/lead-guest-star.png" width="720" height="1564" alt="Wut Mutt reveal for Violet, a silver goldendoodle: Standard Poodle 55% and Guest Star 45%, certainty dial reading Merely suspicious"></div>
+<figcaption class="meta">When the model can’t tell doodle types apart, the high-certainty poodle lineage leads and the rest is billed as a Guest Star, acknowledging the unknown.</figcaption>
+</figure>
+<section class="outcome" aria-labelledby="outcome-label">
+<div class="wrap">
+<h2 class="label" id="outcome-label">Outcome</h2>
+<p class="body-lg text">Shipped solo to the App Store, September 2026. Real-world testing before launch mapped where the AI model was unreliable, and I set an honest fallback for every way a result could go wrong. When the model can’t tell poodle mixes apart, the app says “Poodle + Guest Star” rather than guessing.</p>
+</div>
+</section>
+<section class="section wrap" aria-labelledby="problem">
+<h2 class="label" id="problem">Problem</h2>
+<p class="text">Wut Mutt guesses a dog’s breeds from a photo, for people meeting a dog at a shelter or on the street. The experience is staged as a soap opera with dramatic reveals and a cast of breeds. The app only has value if people can trust what it tells them, but the model’s accuracy varies with each unique dog.</p>
+<p class="text">Some breeds it reads reliably. Others it confuses with lookalikes. A few it shouldn’t name at all, because the label carries consequences outside the app.</p>
+<p class="text">Experts vary the same way. A doodle mix challenges a vet, too. The difference is that an app has to decide, in advance, how to be honest about what it doesn’t know.</p>
+</section>
+<section class="section wrap" aria-labelledby="role">
+<h2 class="label" id="role">My role</h2>
+<p class="text">I defined the product, made the design decisions, tested with real dogs and photos, identified bugs, and shipped. Claude Design and Claude Code handled the build, including accessibility checks, based on the visual references I provided. Claude Code proposed, measured, and enforced rules. I directed, and several of my overrides became the standards the rest of the build was held to.</p>
+</section>
+<section class="section wrap" aria-labelledby="constraints">
+<h2 class="label" id="constraints">Constraints</h2>
+<p class="text">There are four ways the model can mislead, with a different answer for each.</p>
+<table class="ctable text">
+<caption class="sr">Four model limitations, the solution for each, and the rule behind it</caption>
+<thead><tr><th scope="col">Model limitation</th><th scope="col">Solution</th><th scope="col">Rule</th></tr></thead>
+<tbody>
+<tr><td data-th="Model limitation">Poodle mixes: can’t distinguish doodle types</td><td data-th="Solution">“Poodle + Guest Star”</td><td data-th="Rule">Admit uncertainty</td></tr>
+<tr><td data-th="Model limitation">Small fluffy dogs: several lookalikes read as equally likely</td><td data-th="Solution">One best guess, no stacked near-duplicates</td><td data-th="Rule">Refuse false precision</td></tr>
+<tr><td data-th="Model limitation">Pit-type breeds: can’t differentiate near-identical lineages, and a label with real-world consequences</td><td data-th="Solution">One result, named for the origin breed, “bull-and-terrier.” Individual pit-type breeds are never listed</td><td data-th="Rule">Consolidate. Never hand out a potentially harmful label.</td></tr>
+<tr><td data-th="Model limitation">Wolves: not a dog, and a safety risk if treated as one</td><td data-th="Solution">No-result screen</td><td data-th="Rule">Decline to answer</td></tr>
+</tbody>
+</table>
+<p class="text">The pit-type and wolf decisions are about real-world consequences in addition to accuracy. Giving a dog a pit-type label can have implications for adoption and housing, even though the app is meant for entertainment. The same thinking informed a tone rule: the soap opera teases breed secrets but doesn’t judge them. Negative backstories are banned.</p>
+<p class="text">Classifying a wolf as a type of dog could invite someone to approach the animal with false security. The “not a dog” result is a user-safety choice.</p>
+<p class="text">To reinforce the decision to reduce false precision, I added a certainty dial. The dial shows the result’s certainty as a needle, not a number, based on rules that interpret the model’s confidence. When a Guest Star is billed at 40% or more, the dial is farther to the left and labeled “Merely suspicious.”</p>
+</section>
+<section class="section wrap" aria-labelledby="decision">
+<h2 class="label" id="decision">Guiding principle</h2>
+<blockquote class="quote"><p>Sounding sure isn’t the same as being right.</p></blockquote>
+<p class="text">I tested photos of Violet, a goldendoodle with a silver coat, taken at different ages. The model consistently identified her as a type of poodle, but the specifics varied. Depending on her haircut, the result could be all poodle, or a mix like bernedoodle, but was never correctly goldendoodle.</p>
+<p class="text">Since a confidently wrong answer would lose user trust, I added rules, based on testing, that decide when the model has earned a specific answer. The flow below shows how they work.</p>
+<figure class="figure media">
+<svg class="dg dg-desktop" viewBox="40 -12 880 356" role="img" aria-labelledby="dg-title dg-desc" font-family="'Open Sans',system-ui,sans-serif" font-size="16">
+<title id="dg-title">Confidence-threshold flow for Wut Mutt reveals</title>
+<desc id="dg-desc">A photo goes to the model, then to a confidence check. If confidence is high, the app shows the breed result. If confidence is low, the app shows “Poodle + Guest Star,” the shipped path. Branching off that low-confidence path is the rejected alternative: showing a best-guess breed anyway.</desc>
+<defs>
+<marker id="ar-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#5F6368"/></marker>
+<marker id="ar-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#216F69"/></marker>
+<marker id="ar-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#DC0000"/></marker>
+</defs><text class="kicker" x="40" y="1" fill="#5F6368" font-weight="600" font-size="13" letter-spacing=".06em">USER FLOW</text>
+<g fill="none" stroke="#5F6368" stroke-width="1.5">
+<path d="M190 68H230" marker-end="url(#ar-grey)"/>
+<path d="M380 68H420" marker-end="url(#ar-grey)"/>
+<path d="M610 68H700" marker-end="url(#ar-grey)"/>
+</g>
+<path d="M515 104V196H700" fill="none" stroke="#216F69" stroke-width="1.5" marker-end="url(#ar-green)"/>
+<path d="M515 196V292H700" fill="none" stroke="#DC0000" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#ar-red)"/>
+<g fill="#5F6368">
+<text x="655" y="58" text-anchor="middle">High</text>
+<text x="525" y="186" fill="#201918">Low</text>
+</g>
+<g fill="#E8E6E6" stroke="#093190" stroke-width="1">
+<rect x="40" y="40" width="150" height="56" rx="8"/>
+<rect x="230" y="40" width="150" height="56" rx="8"/>
+<rect x="420" y="32" width="190" height="72" rx="8" fill="#FEFEFE" stroke="#093190" stroke-width="2"/>
+<rect x="700" y="40" width="200" height="56" rx="8"/>
+</g>
+<rect x="700" y="160" width="200" height="72" rx="8" fill="#FDDD00" stroke="#216F69" stroke-width="2"/>
+<rect x="700" y="256" width="200" height="72" rx="8" fill="#FEFEFE" stroke="#DC0000" stroke-width="2" stroke-dasharray="6 5"/>
+<g fill="#201918" text-anchor="middle">
+<text x="115" y="73">Photo</text>
+<text x="305" y="73">Model</text>
+<text x="515" y="73" font-weight="600">Confidence check</text>
+<text x="800" y="73">Breed result</text>
+<text x="800" y="201">Poodle + Guest Star</text>
+<text x="800" y="287">Best-guess breed</text>
+<text x="800" y="305" fill="#DC0000" font-weight="600" font-size="13">Rejected alternative</text>
+</g>
+</svg>
+<svg class="dg dg-mobile" viewBox="0 -28 370 448" role="img" aria-labelledby="dgm-title dgm-desc" font-family="'Open Sans',system-ui,sans-serif" font-size="14">
+<title id="dgm-title">Confidence-threshold flow for Wut Mutt reveals</title>
+<desc id="dgm-desc">A photo goes to the model, then to a confidence check. If confidence is high, the app shows the breed result. If confidence is low, the app shows “Poodle + Guest Star,” the shipped path. Branching off that low-confidence path is the rejected alternative: showing a best-guess breed anyway.</desc>
+<defs>
+<marker id="arm-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#5F6368"/></marker>
+<marker id="arm-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#216F69"/></marker>
+<marker id="arm-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#DC0000"/></marker>
+</defs><text class="kicker" x="20" y="-15" fill="#5F6368" font-weight="600" font-size="12" letter-spacing=".06em">USER FLOW</text>
+<g fill="none" stroke="#5F6368" stroke-width="1.5">
+<path d="M95 64V100" marker-end="url(#arm-grey)"/>
+<path d="M95 148V184" marker-end="url(#arm-grey)"/>
+<path d="M170 220H210" marker-end="url(#arm-grey)"/>
+</g>
+<path d="M95 256V330" fill="none" stroke="#216F69" stroke-width="1.5" marker-end="url(#arm-green)"/>
+<path d="M95 295H285V330" fill="none" stroke="#DC0000" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arm-red)"/>
+<g fill="#5F6368">
+<text x="190" y="211" text-anchor="middle">High</text>
+<text x="20" y="298" text-anchor="start" fill="#201918">Low</text>
+</g>
+<g fill="#E8E6E6" stroke="#093190" stroke-width="1">
+<rect x="20" y="16" width="150" height="48" rx="8"/>
+<rect x="20" y="100" width="150" height="48" rx="8"/>
+<rect x="20" y="184" width="150" height="72" rx="8" fill="#FEFEFE" stroke="#093190" stroke-width="2"/>
+<rect x="210" y="196" width="140" height="48" rx="8"/>
+</g>
+<rect x="20" y="330" width="150" height="72" rx="8" fill="#FDDD00" stroke="#216F69" stroke-width="2"/>
+<rect x="210" y="330" width="140" height="72" rx="8" fill="#FEFEFE" stroke="#DC0000" stroke-width="2" stroke-dasharray="6 5"/>
+<g fill="#201918" text-anchor="middle">
+<text x="95" y="45">Photo</text>
+<text x="95" y="129">Model</text>
+<text x="95" y="225" font-weight="600">Confidence check</text>
+<text x="280" y="225">Breed result</text>
+<text x="95" y="371">Poodle + Guest Star</text>
+<text x="280" y="361">Best-guess breed</text>
+<text x="280" y="379" fill="#DC0000" font-weight="600" font-size="13">Rejected alternative</text>
+</g>
+</svg>
+<figcaption class="meta">The confidence check. High-confidence photos return a breed. Low-confidence photos return Poodle + Guest Star. The rejected alternative presented a best-guess result as fact.</figcaption>
+</figure>
+<p class="text">Because doodle breed results consistently varied, the default formula became Poodle + Guest Star. The poodle leads the <em>reveal</em>, the app’s word for a result. Whatever else the model sees gets billed as a Guest Star, acknowledging the unknown. Photos of silver-haired Violet now produce an answer that is less specific but correct.</p>
+<p class="text">The rule that came out of the doodle testing applies to every named cross: bill a recognizable cross as lead, never guess which cross without certainty, never two crosses together, and a cross never shares a cast with its own parent. Goldendoodle, for example, never appears alongside Poodle.</p>
+<div class="screens media">
+<figure>
+<div class="frame"><img src="assets/wut-mutt/bull-and-terrier.png" width="720" height="1561" alt="Wut Mutt’s breed profile for Bull-and-Terrier: a vintage photo of a stocky black-and-white dog, cards reading Size Medium, Energy High, Drool Low, Floof None, and the tagline “The stoic enforcer with a soft spot she won’t admit to”"></div>
+<figcaption class="meta">Consolidation is an extension of the Poodle rule: every pit-type dog gets the same profile, Bull-and-Terrier, named for the origin breed.</figcaption>
+</figure>
+<figure>
+<div class="frame"><img src="assets/wut-mutt/not-a-dog.png" width="720" height="1561" alt="Wut Mutt no-result screen for a wolf photo: Wut? Unhinged betrayal. Clearly not a mutt. Please use a new photo of a dog."></div>
+<figcaption class="meta">Not a dog: the app declines to answer when it sees a wolf for safety reasons and asks for a new photo.</figcaption>
+</figure>
+</div>
+<aside class="ai-note" aria-labelledby="ai-note-heading">
+<h3 id="ai-note-heading">App Store disclosure</h3>
+<p>Reveals are generated live by Claude, Anthropic’s AI. It’s a juicy guess, not a DNA test — the percentages describe what shows in the photo, not ancestry, and the app says so right on the results. Full disclosure inside, plus credits for every photo.</p>
+</aside>
+</section>
+<section class="section wrap" aria-labelledby="differently">
+<h2 class="label" id="differently">Learning</h2>
+<p class="text">Wut Mutt taught me to test the model before designing the experience. I started with the app’s design and story, assuming that a model trained on dog images would simply work, and only tested its behavior afterward. Had that assumption been false, the app would have been useless and the design effort wasted. I now evaluate that risk upfront.</p>
+</section>
+<nav class="pager wrap" aria-label="Case studies">
+<a class="prev" href="medical-learning-tool.html"><span class="kicker">Previous</span><span class="title">Medical learning tool</span></a>
+<a class="next" href="lemon-pig.html"><span class="kicker">Next</span><span class="title">Lemon Pig</span></a>
+</nav>
+</article>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<ul>
+<li><a href="ai-note.html">AI disclosure</a></li>
+</ul>
+<p class="copy">© 2026 Sadie Forrester</p>
+</div>
+</footer>
+</body>
+</html>
