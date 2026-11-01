@@ -78,7 +78,7 @@
 <p class="text">I tested photos of Violet, a goldendoodle with a silver coat, taken at different ages. The model consistently identified her as a type of poodle, but the specifics varied. Depending on her haircut, the result could be all poodle, or a mix like bernedoodle, but was never correctly goldendoodle.</p>
 <p class="text">Since a confidently wrong answer would lose user trust, I added rules, based on testing, that decide when the model has earned a specific answer. The flow below shows how they work.</p>
 <figure class="figure media">
-<svg class="dg dg-desktop" viewBox="40 -12 880 356" role="img" aria-labelledby="dg-title dg-desc" font-family="'Open Sans',system-ui,sans-serif" font-size="16">
+<svg class="dg dg-desktop" viewBox="36 -12 884 356" role="img" aria-labelledby="dg-title dg-desc" font-family="'Open Sans',system-ui,sans-serif" font-size="16">
 <title id="dg-title">Confidence-threshold flow for Wut Mutt reveals</title>
 <desc id="dg-desc">A photo goes to the model, then to a confidence check. If confidence is high, the app shows the breed result. If confidence is low, the app shows “Poodle + Guest Star,” the shipped path. Branching off that low-confidence path is the rejected alternative: showing a best-guess breed anyway.</desc>
 <defs>
