@@ -24,10 +24,10 @@ p+p{margin-top:24px}
 .brand{font-family:Lato,sans-serif;font-weight:400;font-size:17px;color:var(--brown);text-decoration:none;white-space:nowrap}
 .brand:hover{color:var(--blue)}
 .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:24px}
-.nav a{text-decoration:none;font-family:Lato,sans-serif;font-size:15px;line-height:1;padding:6px 0;color:var(--brown)}
+.nav a{text-decoration:none;font-family:Lato,sans-serif;font-size:15px;line-height:1;padding:6px 0;color:var(--brown);white-space:nowrap}
 .nav a:hover{color:var(--blue)}
 .nav a[aria-current]{color:var(--blue);font-weight:700}.nav .pdf{color:var(--grey);font-size:11px;vertical-align:2px}
-@media (max-width:479px){.brand{font-size:15px}.nav ul{gap:16px}.nav a{font-size:14px}}
+@media (max-width:479px){.brand{font-size:15px}.nav ul{gap:12px}.nav a{font-size:14px}}
 .case-header{padding-top:64px;padding-bottom:40px}.lead.wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
 .figure .dg-mobile,.strip .dg-mobile{display:block}.figure .dg-desktop,.strip .dg-desktop{display:none}.lead .dg-mobile{max-width:360px}
 .case-header .tag+h1{margin-top:16px}
